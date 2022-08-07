@@ -1,5 +1,6 @@
 from copy import deepcopy
 import traceback
+from sys import platform
 import logging
 import requests
 import urllib.parse
@@ -14,6 +15,12 @@ VERSION = '1.0.0'
 
 
 class FileManager:
+
+	def __init__(self):
+		if platform == 'linux' or platform == 'linux2' or platform == 'darwin':
+			self.os_separator = '/'
+		else:
+			self.os_separator = '\\'
 
 	def CreateFolders(self):
 		try:
