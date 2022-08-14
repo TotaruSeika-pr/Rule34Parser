@@ -138,7 +138,7 @@ class Parser(FileManager, ArgumentsParsing):
 					for block in images_blocks:
 						self.image_URLs.append(Parser.ParsingImageURL(tag=str(block)))
 
-					#FileManager.SaveFiles(self.image_URLs)
+					FileManager.SaveFiles(self.image_URLs)
 				else:
 					Parser.ExitProgram()
 			
