@@ -40,3 +40,4 @@ The main program for downloading media content. After the first launch, it creat
 
 ##### `--tags or -t` - It accepts as parameters a string of tags, separated by a comma, by which it performs parsing. It is important to know that the program will generate an error if you specify more than three tags without being authorized on the site.
 
+###### This project is extended to individuals to meet the personal needs of users.
