@@ -18,3 +18,9 @@
 
 A program that receives all existing tags from the site https://rule34.paheal.net. After full parsing, the program collects all tags into one tags.json file. This file is needed for the program that we will analyze next.
 Also, this program should be run 2 times a month, as additional tags may appear on the site. Requires internet connection to work.
+
+## TagSearch v1.0.0
+
+Script to search for existing tags. Uses the tags.json file to work. Asks you for the search text and returns a list of similar tags.
+
+##### The script has keys:
