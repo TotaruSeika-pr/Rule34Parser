@@ -94,8 +94,9 @@ class Parser(FileManager, ArgumentsParsing):
 
 	def __init__(self):
 		self.image_URLs = []
-		self.URL = 'https://rule34.paheal.net/post/list/'
+		self.URL = ''
 		self.args = ''
+		self.save_URL = 'https://rule34.paheal.net/post/list/'
 		self.create_URL = False
 		self.paths = {
 			'png': 'images', 
@@ -124,6 +125,9 @@ class Parser(FileManager, ArgumentsParsing):
 			except ConnectTimeout:
 				print(colored('Server response delay. Use VPN or proxy.', 'red'))
 				Parser.ExitProgram()
+			except OSError:
+				print('The answer cannot be provided to your client.')
+				Parser.ExitProgram()
 			else:
 				print(f'= = = = = = P A G E [{self.args.page-1}] = = = = =\n')
 				out = Parser.CodeStatusCheck(code=src.status_code)
@@ -134,7 +138,7 @@ class Parser(FileManager, ArgumentsParsing):
 					for block in images_blocks:
 						self.image_URLs.append(Parser.ParsingImageURL(tag=str(block)))
 
-					FileManager.SaveFiles(self.image_URLs)
+					#FileManager.SaveFiles(self.image_URLs)
 				else:
 					Parser.ExitProgram()
 			
@@ -142,7 +146,6 @@ class Parser(FileManager, ArgumentsParsing):
 
 	def SpaceKeyParsin(line):
 		answer = ''
-		print(line)
 		for i in list(line):
 			if i == ' ':
 				answer += '_'
@@ -155,14 +158,12 @@ class Parser(FileManager, ArgumentsParsing):
 		if self.create_URL == False:
 			if self.args.search != None:
 				self.args.search = Parser.SpaceKeyParsin(self.args.search)
-				self.URL = f'https://rule34.paheal.net/post/list/{self.args.search}'
+				self.save_URL = f'https://rule34.paheal.net/post/list/{self.args.search}'
 			if self.args.tags != None:
 				for i in self.args.tags:
-					self.URL += str(f'{Parser.SpaceKeyParsin(i)}%20')
+					self.save_URL += str(f'{Parser.SpaceKeyParsin(i)}%20')
 		
-		
-		
-		self.URL += f'{self.separator_URL}{self.args.page}'
+		self.URL = self.save_URL + f'{self.separator_URL}{self.args.page}'
 		self.args.page += 1
 
 	def ParsingImageURL(tag):
@@ -208,7 +209,7 @@ def main():
 		par = Parser()
 		par.CreateFolders()
 		if par.args.version:
-			print(f'version6: {VERSION}')
+			print(f'version: {VERSION}')
 		time_start = time.time()
 		par.Parsing()
 	except KeyboardInterrupt:
