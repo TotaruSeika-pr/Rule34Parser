@@ -11,7 +11,7 @@ from termcolor import colored
 import os
 import time
 
-VERSION = '1.0.0 beta'
+VERSION = '1.0.0'
 
 
 class FileManager:
