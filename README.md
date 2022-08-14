@@ -40,6 +40,9 @@ The main program for downloading media content. After the first launch, it creat
 
 ##### `--tags or -t` - It accepts as parameters a string of tags, separated by a comma, by which it performs parsing. It is important to know that the program will generate an error if you specify more than three tags without being authorized on the site.
 
++ To contact me - totaru.seika@gmail.com
++ [My Reddit](https://www.reddit.com/user/Totaru_Seika)
+
 #### Terms of use:
 1) This project is extended to individuals to meet the personal needs of users.
 2) The ability to use and / or modify the program for non-commercial purposes with the mention of the author.
